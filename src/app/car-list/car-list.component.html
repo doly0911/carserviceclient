@@ -1,15 +1,26 @@
 <mat-card>
   <mat-card-title>Car List</mat-card-title>
+
   <mat-card-content>
     <mat-list>
       <mat-list-item *ngFor="let car of cars">
+        <!--  Consume API externa-->
         <img mat-list-avatar src="{{car.giphyUrl}}" alt="{{car.name}}">
         <h3 mat-line>
+          <!--Abre el componente car-edit-->
           <a mat-button [routerLink]="['/car-edit', car.id]">{{car.name}}</a>
         </h3>
       </mat-list-item>
     </mat-list>
   </mat-card-content>
 
-  <button mat-fab color="primary" [routerLink]="['/car-add']">Add</button>
+  <mat-card-actions>
+    <!--Boton Add-->
+    <button mat-raised-button color="primary" [routerLink]="['/car-add']">Add Car</button>
+    <!--Boton Ver Lista de Propietarios-->
+    <br>
+    <br>
+    <button mat-raised-button routerLink="/owner-list" color="primary">View owners list</button>
+  </mat-card-actions>
+
 </mat-card>

@@ -1,0 +1,21 @@
+<mat-card>
+
+  <mat-card-title>Owner List</mat-card-title>
+  <mat-card-content>
+    <mat-list>
+      <!--Recorrer lista de owners de la API-->
+      <mat-list-item *ngFor="let owner of owners">
+        <!--  Consume API externa
+        <img mat-list-avatar src="{{car.giphyUrl}}" alt="{{car.name}}">-->
+        <h3 mat-line>
+          <!--Abre el componente car-edit-->
+          <a mat-button [routerLink]="['/owner-edit', owner.id]">{{owner.name}}</a>
+        </h3>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+
+  <!--Boton Add-->
+  <button mat-fab color="primary" [routerLink]="['/car-add']">Add</button>
+
+</mat-card>

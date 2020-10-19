@@ -14,6 +14,7 @@ export class GiphyService {
 
   get(searchTerm) {
     const apiLink = this.giphyApi + searchTerm;
+    console.log(searchTerm)
     return this.http.get(apiLink).pipe(map((response: any) => {
       if (response.data.length > 0) {
         return response.data[0].images.original.url;
