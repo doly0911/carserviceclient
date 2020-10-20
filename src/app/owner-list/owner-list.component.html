@@ -2,20 +2,35 @@
 
   <mat-card-title>Owner List</mat-card-title>
   <mat-card-content>
-    <mat-list>
-      <!--Recorrer lista de owners de la API-->
+   <!-- <mat-list>
+      Recorrer lista de owners de la API
       <mat-list-item *ngFor="let owner of owners">
-        <!--  Consume API externa
-        <img mat-list-avatar src="{{car.giphyUrl}}" alt="{{car.name}}">-->
+
+        <img mat-list-avatar src="{{car.giphyUrl}}" alt="{{car.name}}">
         <h3 mat-line>
-          <!--Abre el componente car-edit-->
-          <a mat-button [routerLink]="['/owner-edit', owner.id]">{{owner.name}}</a>
+          <a mat-button [routerLink]="['/owner-edit', owner.dni]">{{owner.name}}</a>
         </h3>
       </mat-list-item>
-    </mat-list>
+    </mat-list>-->
+
+    <mat-selection-list #owner_list>
+      <mat-list-option *ngFor="let owner of owners">
+        <a mat-button [routerLink]="['/owner-edit', owner.dni]">{{owner.name}}</a>
+      </mat-list-option>
+    </mat-selection-list>
+
+    <p>
+      Owners selected: {{owner_list.selectedOptions.selected.length}}
+    </p>
+
   </mat-card-content>
 
-  <!--Boton Add-->
-  <button mat-fab color="primary" [routerLink]="['/car-add']">Add</button>
+
+
+
+  <mat-card-actions>
+  <button mat-fab color="primary"  [routerLink]="['/owner-add']">Add</button>
+  <button mat-fab color="primary" (click)="removeSelected(owner.href,owner_list.selectedOptions)" >Delete</button>
+</mat-card-actions>
 
 </mat-card>

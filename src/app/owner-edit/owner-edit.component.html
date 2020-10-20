@@ -1,44 +1,51 @@
 <mat-card>
-  <form #carForm="ngForm" (ngSubmit)="save(carForm.value)">
+  <form #ownerForm="ngForm" (ngSubmit)="save(ownerForm.value)">
 
     <mat-card-header>
       <mat-card-title>
-        <h2>{{ car.name ? "Edit" : "Add" }} Car</h2>
+        <h2>{{ owner.dni ? "Edit" : "Add" }} Owner</h2>
       </mat-card-title>
     </mat-card-header>
 
     <mat-card-content>
-      <input type="hidden" name="href" [(ngModel)]="car.href" />
-      <!--Ingresan el nombre del carro para editarlo-->
+      <input type="hidden" name="href" [(ngModel)]="owner.href" />
+
+      <!--Campos para ingresar del owner-->
+
       <mat-form-field>
-        <input matInput placeholder="Owner Name" [(ngModel)]="car.name" required name="name" #name />
+        <input matInput placeholder="Dni" [(ngModel)]="owner.dni" required name="dni" #dni />
       </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Name" [(ngModel)]="owner.name" required name="name" #name />
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Profession" [(ngModel)]="owner.profession" required name="profession" #profession />
+      </mat-form-field>
+      <br>
     </mat-card-content>
 
     <mat-card-actions>
-
-      <button mat-raised-button color="primary" type="submit" [disabled]="!carForm.form.valid">
-        Crear
+      <button mat-raised-button color="primary" type="submit" [disabled]="!oldOwner">
+        Create
       </button>
 
       <!--Boton Save-->
-      <button mat-raised-button color="primary" type="submit" [disabled]="!carForm.form.valid">
-        Save
+      <button mat-raised-button color="primary" type="submit" [disabled]="oldOwner">
+        Update
       </button>
 
       <!--Boton Delete-->
-      <button mat-raised-button color="secondary" (click)="remove(car.href)" *ngIf="car.href" type="button">
+      <button mat-raised-button color="secondary" (click)="remove(owner.href,owner.dni)" *ngIf="owner.href" type="button">
         Delete
       </button>
 
       <!--Boton Cancelar-->
-      <a mat-button routerLink="/car-list">Cancel</a>
+      <a mat-button routerLink="/owner-list">Cancel</a>
     </mat-card-actions>
 
-    <mat-card-footer>
-      <div class="giphy">
-        <img src="{{ car.giphyUrl }}" alt="{{ car.name }}" />
-      </div>
-    </mat-card-footer>
+
   </form>
+
 </mat-card>
