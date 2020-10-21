@@ -15,9 +15,10 @@ export class OwnerEditComponent implements OnInit {
   sub: Subscription;
   oldOwner : boolean = true;
 
-  constructor(private carService: CarService, private route: ActivatedRoute,
-    private router: Router,
-    private ownerService: OwnerService) { }
+  constructor(private carService: CarService,
+              private route: ActivatedRoute,
+              private router: Router,
+              private ownerService: OwnerService) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
